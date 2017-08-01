@@ -34,6 +34,11 @@ void Conway::processNextCycle(){
             canvas[y][x] = nextcanvas[y][x] ? true : false;
         }
     }
+    iteration++;
+}
+
+int Conway::getIteration() {
+    return iteration;
 }
 
 void Conway::setValueAtLocation(bool toset, int x, int y){

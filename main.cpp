@@ -6,6 +6,24 @@
 #include "conway.h"
 
 #define BLOCK L'\uE030'
+
+void drawConway(Conway conway){
+    int height,width = 0; 
+    getmaxyx(stdscr, height, width);
+    for(int x=0; x<width; x++){
+        for(int y=1; y<height; y++){
+            if(conway.getValueAtLocation(x,y-1)){
+                mvaddch(y,x, 'x');
+            }
+        }
+    }
+    mvaddch(0,width-20,' ');
+    char label[20];
+    sprintf(label,"%d",conway.getIteration());
+    conway.processNextCycle();
+}
+
+
 int main(void) {
 
     WINDOW * mainwin;
@@ -16,13 +34,9 @@ int main(void) {
     int rows = 0;
     int width, height = 400;
     char mover = '@';
-    char label[45];
 
-    Conway conway = Conway();
+    Conway conway;
     conway.seedTheCanvas();
-
-    bool getValueAtLocation(int x, int y);
-    void processNextCycle();
 
     setlocale(LC_ALL,"en_US.UTF-8");
     /*  Initialize ncurses  */
@@ -58,10 +72,6 @@ int main(void) {
     
     /*  Loop until user hits 'q' to quit  */
     while ( (ch = getch()) != 'q' ) {
-        getmaxyx(stdscr, rows, cols);
-        sprintf(label, "Rows = %d, Cols = %d",rows, cols);
-        printw(label);
-        mvaddch(y,x, ' ');
         switch ( ch ) {
             case KEY_UP:
                 if ( y > 0 )
@@ -81,6 +91,9 @@ int main(void) {
                 ++x;
                 break;
 
+            case 'n':
+                drawConway(conway);
+                break;
             case 'h':
                 x = 0;
                 y = 0;
@@ -92,7 +105,6 @@ int main(void) {
                 break;
 
         }
-        mvaddch(y,x, mover);
         refresh();
     }
 

@@ -1,5 +1,6 @@
 CC=g++
-CFLAGS=-Wall -std=c++11 -g -pedantic
+CFLAGS=-Wall -std=gnu++11 -g -pedantic 
+
 LDFLAGS=-lncursesw
 
 OBJECTS=main.o conway.o

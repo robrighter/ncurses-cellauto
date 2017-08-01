@@ -12,12 +12,14 @@ class Conway {
     bool getValueAtLocation(int x, int y);
     void processNextCycle();
     void seedTheCanvas();
-    
+    int  getIteration();
+
   private:
     void setValueAtLocation(bool toset, int x, int y);
     bool calculateValueAtLocation(int x, int y);
     bool canvas[MATRIX_HEIGHT][MATRIX_WIDTH] =  { {false}, {false} };
     bool neighbors[8];
+    int iteration = 0;
 };
 
 
