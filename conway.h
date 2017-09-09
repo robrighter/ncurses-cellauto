@@ -17,9 +17,9 @@ class Conway {
   private:
     void setValueAtLocation(bool toset, int x, int y);
     bool calculateValueAtLocation(int x, int y);
-    bool canvas[MATRIX_HEIGHT][MATRIX_WIDTH] =  { {false}, {false} };
+    bool canvas[MATRIX_HEIGHT][MATRIX_WIDTH];
     bool neighbors[8];
-    int iteration = 0;
+    int iteration;
 };
 
 

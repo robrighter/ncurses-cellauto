@@ -7,7 +7,12 @@
 
 #define BLOCK L'\uE030'
 
+
+int tester = 0;
+
 void drawConway(Conway conway){
+    conway.processNextCycle();
+    conway.processNextCycle();
     int height,width = 0; 
     getmaxyx(stdscr, height, width);
     for(int x=0; x<width; x++){
@@ -19,8 +24,9 @@ void drawConway(Conway conway){
     }
     mvaddch(0,width-20,' ');
     char label[20];
-    sprintf(label,"%d",conway.getIteration());
-    conway.processNextCycle();
+    sprintf(label,"it: %d | test: %d",conway.getIteration(), tester++);
+    printw(label);
+    //conway.processNextCycle();
 }
 
 

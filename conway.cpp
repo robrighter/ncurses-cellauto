@@ -2,7 +2,14 @@
 #include <ctime>
 #include <cstdlib>
 
-Conway::Conway(){}
+Conway::Conway(){
+    for(int i=0; i<MATRIX_HEIGHT; i++){
+        for(int t=0; t<MATRIX_WIDTH; t++){
+            canvas[i][t] = false;
+        }
+    }
+    iteration = 0;
+}
 
 bool Conway::getValueAtLocation(int x, int y){
     if( (x < MATRIX_WIDTH) && (y < MATRIX_HEIGHT) ){

@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Wall -std=gnu++11 -g -pedantic 
+CFLAGS=-Wall -std=gnu++11 -g -pedantic -Wc++11-extensions 
 
 LDFLAGS=-lncursesw
 
