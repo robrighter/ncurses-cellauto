@@ -109,12 +109,12 @@ bool Conway::calculateValueAtLocation(int x, int y){
 }
 
 void Conway::seedTheCanvas(){
-    int number_on = rand()%150;
+    int number_on = rand()%(MATRIX_HEIGHT*MATRIX_WIDTH);
     int x = 0;
     int y = 0;
     for(int i=0; i<number_on; i++){
-        y = i%MATRIX_HEIGHT;
-        x = i%MATRIX_WIDTH;
+        y = rand()%MATRIX_HEIGHT;
+        x = rand()%MATRIX_WIDTH;
         canvas[y][x] = true;
     }
 }

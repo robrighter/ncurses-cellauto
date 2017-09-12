@@ -10,23 +10,20 @@
 
 int tester = 0;
 
-void drawConway(Conway conway){
-    conway.processNextCycle();
-    conway.processNextCycle();
+void drawConway(Conway *conway){
     int height,width = 0; 
     getmaxyx(stdscr, height, width);
     for(int x=0; x<width; x++){
         for(int y=1; y<height; y++){
-            if(conway.getValueAtLocation(x,y-1)){
+            if(conway->getValueAtLocation(x,y-1)){
                 mvaddch(y,x, 'x');
             }
         }
     }
     mvaddch(0,width-20,' ');
     char label[20];
-    sprintf(label,"it: %d | test: %d",conway.getIteration(), tester++);
+    sprintf(label,"it: %d | test: %d",conway->getIteration(), tester++);
     printw(label);
-    //conway.processNextCycle();
 }
 
 
@@ -41,8 +38,8 @@ int main(void) {
     int width, height = 400;
     char mover = '@';
 
-    Conway conway;
-    conway.seedTheCanvas();
+    Conway *conway = new Conway();
+    conway->seedTheCanvas();
 
     setlocale(LC_ALL,"en_US.UTF-8");
     /*  Initialize ncurses  */
@@ -99,6 +96,7 @@ int main(void) {
 
             case 'n':
                 drawConway(conway);
+                conway->processNextCycle();
                 break;
             case 'h':
                 x = 0;
